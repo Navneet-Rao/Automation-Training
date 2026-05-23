@@ -15,10 +15,11 @@ try:
     s=client.open_sftp()
 
 
-
     print(stdout.read().decode())
     print(stderr.read().decode())
 
+
+#new 
 finally:
     client.close()
 
