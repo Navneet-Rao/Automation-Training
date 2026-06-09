@@ -1,0 +1,9 @@
+hostname {{ hostname }}
+
+interface {{ interface }}
+ ip address {{ ip }} {{ mask }}
+ no shutdown
+
+{% if default_route is defined %}
+ip route 0.0.0.0 0.0.0.0 {{ default_route }}
+{% endif %}

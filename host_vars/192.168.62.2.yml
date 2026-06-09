@@ -1,0 +1,5 @@
+hostname: R1
+interface: FastEthernet0
+ip: 192.168.62.2
+mask: 255.255.255.0
+default_route: 192.168.62.1
