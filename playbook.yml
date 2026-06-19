@@ -1,0 +1,9 @@
+- name: Configure OSPF on Cisco Routers
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+
+    - name: Generate OSPF config from template
+      template:
+        src: ospf.j2
