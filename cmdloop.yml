@@ -1,0 +1,20 @@
+---
+
+- name: "Command Loop"
+  hosts: ind
+  gather_facts: false
+  vars:
+    cmds:
+      - show version
+      - sh ip int brief
+
+  tasks:
+    - name: "display"
+      cisco.ios.ios_command:
+        commands: "{{ item }}"
+      loop: "{{ cmds }}"
+      register: results
+    - name: "res"
+      debug:
+        msg: "{{ item.stdout }}"
+      loop: "{{results.results }}"    

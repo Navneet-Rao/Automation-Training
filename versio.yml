@@ -1,0 +1,14 @@
+- name: Get show version from router
+  hosts: Routers
+  gather_facts: no
+
+  tasks:
+    - name: Run show version
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: output
+    - name : display
+      debug: 
+        var: output.stdout_lines
+            

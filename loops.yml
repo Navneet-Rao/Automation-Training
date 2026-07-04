@@ -1,0 +1,21 @@
+---
+
+- name: multiple commands
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: run commands
+      cisco.ios.ios_command:
+        commands:
+          - "{{ item }}"
+      loop:
+        - show aaa attributes
+        - show ip int brief
+        - sh version
+      register: output
+    - name: output  
+      debug:
+         msg: "{{ item.stdout }}"
+      loop: "{{ output.results }}"     
+
