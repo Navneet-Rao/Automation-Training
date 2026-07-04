@@ -1,0 +1,14 @@
+---
+- name: "Playbook to test conditional logic"
+  hosts: ind
+  gather_facts: true
+  connection: network_cli
+  gather_subset:
+    - interfaces   # This gathers interface-related facts for network devices
+
+  tasks:
+    - name: "Task 1"
+      debug:
+        msg: "Interface {{ item['key'] }} has an IP address of {{ item['value']['ipv4'][0]['address'] }}"
+      loop: "{{ ansible_net_interfaces | dict2items }}"
+      when: item['value']['lineprotocol']== 'up'

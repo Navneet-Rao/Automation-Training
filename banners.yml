@@ -1,0 +1,25 @@
+# banner.yml
+
+---
+
+* name: Configure Login Banner on Cisco Routers
+  hosts: Routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+  * name: Configure login banner
+    cisco.ios.ios_banner:
+    banner: login
+    text: |
+    This is my login banner
+    Unauthorized access is prohibited
+    All actions are monitored
+    state: present
+    register: banner_output
+
+  * name: Display result
+    ansible.builtin.debug:
+    var: banner_output
+

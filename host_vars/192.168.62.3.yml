@@ -1,0 +1,14 @@
+---
+
+bgp_asn: 65000
+router_id: "2.2.2.2"
+bgp_neighbors:
+  - ip: 192.168.62.2
+    remote_as: 65000
+    desc: "TO-ROUTER1"
+  - ip: 192.168.62.4
+    remote_as: 65000
+    desc: "TO-ROUTER3"
+bgp_networks:
+  - network: 192.168.62.0
+    mask: 255.255.255.0

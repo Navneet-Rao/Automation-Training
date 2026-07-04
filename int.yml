@@ -1,0 +1,16 @@
+---
+- name: interface
+  hosts: ind
+  gather_facts: no
+
+  tasks:
+    - name: interface status
+      cisco.ios.ios_command:
+        commands:
+          - show ip int brief
+      register: output
+
+    - name: output
+      debug:
+        msg: "{{ hostvars[ansible_host]['ospf']['rid']}}"     
+          

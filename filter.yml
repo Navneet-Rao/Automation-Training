@@ -1,0 +1,13 @@
+---
+
+- name: "filter"
+  hosts: ind
+
+  tasks:
+    - name: "Task 1"
+      vars:
+          myip: "192.168.2.2/24"
+      debug:
+        msg: "{{ myip | ipaddr('network') }}" 
+      when: myip is defined
+

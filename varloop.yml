@@ -1,0 +1,16 @@
+---
+
+- name: "loop"
+  hosts: ind
+  gather_facts: false
+  vars:
+    vlans:
+      - 10
+      - 20
+      - 30
+  tasks:
+    - name: "print vlans"
+      cisco.ios.ios_config:
+        lines:
+          - "vlan {{ item }}"
+      loop: "{{ vlans }}"    
