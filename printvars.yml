@@ -6,4 +6,4 @@
   tasks:
     - name: "Displaying var stuff"
       debug:
-        msg: "{{ hostvars[ansible_host] }}"
+        msg: "{{ eigrp_style}}"

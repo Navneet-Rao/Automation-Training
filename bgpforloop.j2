@@ -1,0 +1,9 @@
+router bgp {{ bgp_asn }}
+ bgp router-id {{ router_id }}
+{% for i in bgp_neighbors %}
+ neighbor {{ i.ip }} remote-as {{ i.remote_as }}
+ neighbor {{ i.ip }} description {{ i.desc }}
+{% endfor %}
+{% for net in bgp_networks %}
+ network {{ net.network }} mask {{ net.mask }}
+{% endfor %}

@@ -1,0 +1,8 @@
+---
+- name: Configure BGP on Cisco Routers
+  hosts: Routers
+  gather_facts: no
+  tasks:
+    - name: Push BGP config to router
+      cisco.ios.ios_config:
+        src: bgpforloop.j2
